@@ -1,0 +1,28 @@
+[
+  {
+    "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC2",
+    "CodeId": 1,
+    "Value": "Home"
+
+  },
+  {
+    "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC3",
+    "CodeId": 1,
+    "Value": "Work"
+  },
+  {
+    "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC1",
+    "CodeId": 1,
+    "Value": "Summer"
+  },
+  {
+    "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC5",
+    "CodeId": 2,
+    "Value": "Mobile"
+  },
+  {
+    "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAD1",
+    "CodeId": 2,
+    "Value": "Home"
+  }
+]

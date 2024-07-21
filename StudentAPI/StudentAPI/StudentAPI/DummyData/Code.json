@@ -1,0 +1,10 @@
+﻿[
+  {
+    "CodeId": 1,
+    "Name": "AddressType"
+  },
+  {
+    "CodeId": 2,
+    "Name":  "ContactType"
+  }
+]

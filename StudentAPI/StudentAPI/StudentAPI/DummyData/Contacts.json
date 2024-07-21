@@ -1,0 +1,33 @@
+[
+    {
+        "ContactId": "120E7474-5B9A-4B5A-95ED-1E138233F30B",
+        "ContactValue": "12345678",
+        "isPrimary": true,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F771",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC5"
+    },
+
+    {
+        "ContactId": "120E7474-5B9A-4B5A-95ED-1E138233F30C",
+        "ContactValue": "12345678",
+        "isPrimary": true,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F772",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC5"
+    },
+
+    {
+        "ContactId": "120E7474-5B9A-4B5A-95ED-1E138233F30D",
+        "ContactValue": "12345678",
+        "isPrimary": true,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F773",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC5"
+    },
+
+    {
+        "ContactId": "120E7474-5B9A-4B5A-95ED-1E138233F30E",
+        "ContactValue": "12345678",
+        "isPrimary": false,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F771",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC5"
+    }
+]

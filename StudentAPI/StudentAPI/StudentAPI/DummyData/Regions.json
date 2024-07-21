@@ -1,0 +1,57 @@
+[
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51150",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A52",
+    "RegionName": "Beirut"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51151",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A52",
+    "RegionName": "Hamra"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51152",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A52",
+    "RegionName": "Tripoli"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51153",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A52",
+    "RegionName": "Sayda"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51154",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A53",
+    "RegionName": "Paris"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51155",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A53",
+    "RegionName": "Nouvelle"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51156",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A53",
+    "RegionName": "Auvergne"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51157",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A54",
+    "RegionName": "Hims"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51158",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A54",
+    "RegionName": "Damascus "
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51159",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A55",
+    "RegionName": "Irbid"
+  },
+  {
+    "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51160",
+    "CountryId": "19B427FC-C141-48D4-9D7C-B7DEE4074A55",
+    "RegionName": "Mafraq"
+  }
+]

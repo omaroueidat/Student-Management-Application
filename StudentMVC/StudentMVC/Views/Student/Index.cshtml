@@ -1,0 +1,44 @@
+﻿@inject IConfiguration configuration
+
+@{
+	ViewBag.Title = "Students";
+	int i = 0;
+	string url = "https://localhost:7171/Student";
+	
+
+}
+
+<ejs-grid id="Grid" dataSource="@ViewBag.Students" allowResizing="true" autoFit="true">
+	<e-grid-columns>
+		<e-grid-column field="StudentName" headerText="Name" textAlign="Center" minwidth="100" maxwidth="150"></e-grid-column>
+		<e-grid-column field="DateOfBirth" headerText="Date Of Birth" format="d/M/y" textAlign="Center" minwidth="100" maxwidth="150"></e-grid-column>
+		<e-grid-column headerText="Gender" template="#addGender" textAlign="Center" minwidth="100" maxwidth="150"></e-grid-column>
+		
+		<e-grid-column headerText="Options" template="#addOptions" minwidth="100" maxwidth="150"></e-grid-column>
+	</e-grid-columns>
+</ejs-grid>
+
+
+<script id="addOptions" type="text/x-template">
+	<div>
+		<a href="@url/ViewDetails/${StudentId}">View Details</a>
+		<br />
+		<a href="@url/Edit/${StudentId}">Edit</a>
+		<br />
+		<a href="@url/Delete/${StudentId}" onclick="return conf()">Delete</a>
+		<br />
+	</div>
+</script>
+
+
+<script id="addGender" type="text/x-template">
+	
+	${gender == 0 ? "Male" : "Female"}
+	
+</script>
+
+<script>
+	function conf(){
+		return confirm("Are you sure you want to delete?");
+	}
+</script>

@@ -1,0 +1,46 @@
+[
+    {
+        "AddressId": "179E627D-26A5-4A4B-B0A2-331518945033",
+        "AddressValue": "Street-1 Region X Buiding Y Floor Z",
+        "isPrimary": true,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F771",
+        "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51150",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC2"
+    },
+
+    {
+        "AddressId": "179E627D-26A5-4A4B-B0A2-331518945034",
+        "AddressValue": "Street-1 Region X Buiding Y Floor Z",
+        "isPrimary": true,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F772",
+        "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51151",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC3"
+    },
+
+    {
+        "AddressId": "179E627D-26A5-4A4B-B0A2-331518945035",
+        "AddressValue": "Street-1 Region X Buiding Y Floor Z",
+        "isPrimary": true,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F773",
+        "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51152",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC3"
+    },
+
+    {
+        "AddressId": "179E627D-26A5-4A4B-B0A2-331518945036",
+        "AddressValue": "Street-1 Region X Buiding Y Floor Z",
+        "isPrimary": false,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F773",
+        "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51154",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC1"
+    },
+
+    {
+        "AddressId": "179E627D-26A5-4A4B-B0A2-331518945037",
+        "AddressValue": "Street-1 Region X Buiding Y Floor Z",
+        "isPrimary": true,
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F775",
+        "RegionId": "2A46C752-0C8B-486E-9674-D86E37C51157",
+        "CodeValueId": "86189048-87BA-4D2D-942E-D55DB1EDDAC2"
+    }
+]

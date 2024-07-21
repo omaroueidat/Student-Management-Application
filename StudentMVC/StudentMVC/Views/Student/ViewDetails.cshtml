@@ -1,0 +1,109 @@
+﻿@model StudentResponse
+
+@{
+	ViewBag.Title = $"View Student {Model.StudentName}";
+}
+
+<div class="center-box">
+    
+    @*StudentId*@
+    <label asp-for="@Model.StudentId" class="form-label pt">Student ID</label>
+    <input asp-for="@Model.StudentId" disabled value="@Model.StudentId" />
+
+    @*StudentName*@
+    <div class="form-field flex">
+        <div class="w-25">
+            <label asp-for="@Model.StudentName" class="form-label pt">Student Name</label>
+        </div>
+        <div class="flex-1">
+            <input asp-for="@Model.StudentName" disabled class="form-input" />
+        </div>
+    </div>
+
+    @*DateOfBirth*@
+    <div class="form-field flex">
+        <div class="w-25">
+            <label asp-for="DateOfBirth" class="form-label pt">Date of Birth</label>
+        </div>
+        <div class="flex-1">
+            <input asp-for="@Model.DateOfBirth" disabled class="form-input"  />
+        </div>
+    </div>
+
+    @*gender*@
+    <div class="form-field flex">
+        <div class="w-25">
+            <label class="form-label">Gender</label>
+        </div>
+        <div class="flex-1">
+            @{
+                Gender gender = (Gender)Enum.Parse(typeof(Gender), Model.gender.ToString());
+             }
+                <input type="text" id="gender" asp-for="gender" disabled value="@gender" />
+        </div>
+    </div>
+
+    <br />
+
+    @*Addresses*@
+    <div class="w-25">
+        <span class="form-label">Addresses</span>
+    </div>
+    <br />
+
+    @*Addresses Display*@
+    <ejs-grid id="Grid1" dataSource="@Model.Addresses" allowResizing="true" autoFit="true">
+        <e-grid-columns>
+            <e-grid-column field="AddressValue" headerText="Address" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+            <e-grid-column field="isPrimary" headerText="Primary" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+            <e-grid-column headerText="Country" template="#addCountry" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+            <e-grid-column headerText="Region" template="#addRegion" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+            <e-grid-column headerText="Address Type" template="#addAddressType" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+
+    <br />
+    <br />
+
+    @*Contacts*@
+    <div class="w-25">
+        <span class="form-label">Contacts</span>
+    </div>
+    <br />
+    @*Contacts Display*@
+    <ejs-grid id="Grid2" dataSource="@Model.Contacts" allowResizing="true" autoFit="true">
+        <e-grid-columns>
+            <e-grid-column field="ContactValue" headerText="Address" textAlign="Center" minwidth="100" maxwidth="150"></e-grid-column>
+            <e-grid-column field="isPrimary" headerText="Primary" textAlign="Center" minwidth="100" maxwidth="150"></e-grid-column>
+            <e-grid-column headerText="Contact Type" template="#addContactType" textAlign="Center" minwidth="100" maxwidth="150"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+
+</div>
+
+
+<script id="addCountry" type="text/x-template">
+    ${Region.Country.CountryName}
+</script>
+
+<script id="addRegion" type="text/x-template">
+    ${Region.RegionName}
+</script>
+
+<script id="addAddressType" type="text/x-template">
+    ${CodeValue.Value}
+</script>
+
+<script id="addContactType" type="text/x-template">
+    ${CodeValue.Value}
+</script>
+
+
+
+<script>
+        // Initialize the first grid
+        var grid1 = document.getElementById("Grid1").ej2_instances[0];
+
+        // Initialize the second grid
+        var grid2 = document.getElementById("Grid2").ej2_instances[1];
+</script>

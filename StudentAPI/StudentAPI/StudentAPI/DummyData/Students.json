@@ -1,0 +1,32 @@
+[
+    {
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F771",
+        "StudentName": "Omar Oueidat",
+        "DateOfBirth": "2003-07-07T00:00:00",
+        "gender": 0
+    },
+    {
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F772",
+        "StudentName": "Alex Alex",
+        "DateOfBirth": "2003-07-07T00:00:00",
+        "gender": 0
+    },
+    {
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F773",
+        "StudentName": "John John",
+        "DateOfBirth": "2003-07-07T00:00:00",
+        "gender": 0
+    },
+    {
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F774",
+        "StudentName": "June",
+        "DateOfBirth": "2003-07-07T00:00:00",
+        "gender": 1
+    },
+    {
+        "StudentId": "1F41F8FA-A6B6-40F4-8AE1-B0CAEEC7F775",
+        "StudentName": "Query",
+        "DateOfBirth": "2003-07-07T00:00:00",
+        "gender": 1
+    }
+]
