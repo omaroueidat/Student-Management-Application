@@ -30,7 +30,7 @@ namespace ServicesContract.DTO
 
         public StudentUpdateRequest ToStudentUpdateRequest()
         {
-            return new StudentUpdateRequest { StudentId = StudentId, StudentName = StudentName, DateOfBirth = DateOfBirth, gender=gender, Addresses = Addresses, };
+            return new StudentUpdateRequest { StudentName = StudentName, DateOfBirth = DateOfBirth, gender=gender, Addresses = Addresses, };
         }
     }
 

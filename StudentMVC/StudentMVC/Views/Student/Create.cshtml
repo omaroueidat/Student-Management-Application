@@ -3,20 +3,39 @@
 @{
     ViewBag.Title = "Create New Student";
     ViewBag.Addresses = new List<dynamic>();
+    ViewBag.Contacts = new List<dynamic>();
+
     var RegionItems = new Syncfusion.EJ2.DropDowns.DropDownList() 
     { 
         DataSource = ViewBag.Regions, // Data of Select List
+        Query = "new ej.data.Query()", 
+        AllowFiltering = true, 
         Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "RegionId", Text = "RegionName" },
 
     };
+
+    var AddressTypesItems = new Syncfusion.EJ2.DropDowns.DropDownList() 
+    { 
+        DataSource = ViewBag.AddressTypes, // Data of Select List
+        Query = "new ej.data.Query()", 
+        AllowFiltering = true, 
+        Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "CodeValueId", Text = "Value" },
+
+    };
+
+    var ContactTypesItems = new Syncfusion.EJ2.DropDowns.DropDownList() 
+    { 
+        DataSource = ViewBag.ContactTypes, // Data of Select List
+        Query = "new ej.data.Query()", 
+        AllowFiltering = true, 
+        Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "CodeValueId", Text = "Value" },
+
+    };
+    
 }
 
-@*
-    var DropDownList = new Syncfusion.EJ2.DropDowns.DropDownList() { DataSource = ViewBag.Regions, Query = "new ej.data.Query()", AllowFiltering = true, Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "Region", Text = "Select Region" }, ActionComplete = "actionComplete" };
-*@
-
 <div class="center-box">
- <form asp-controller="Student" asp-action="Create" method="post">
+    <form asp-controller="Student" asp-action="Create" method="post" onsubmit="serializeGridData()">
 
   @*StudentName*@
   <div class="form-field flex">
@@ -68,24 +87,52 @@
         <ejs-grid id="Grid1" dataSource="ViewBag.Addresses" allowResizing="true" autoFit="true" toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
         <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
         <e-grid-columns>
-            <e-grid-column field="AddressValue" headerText="Address" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
-            <e-grid-column field="isPrimary" headerText="Primary" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+                <e-grid-column field="AddressValue" headerText="Address" textAlign="Center" minwidth="100" maxwidth="130" validationRules="@(new { required= true, minLength= 5, maxLength=30 })"></e-grid-column>
+            <e-grid-column field="isPrimary" edittype="booleanedit" headerText="Primary" textAlign="Center" minwidth="100" maxwidth="130" ></e-grid-column>
 
-           <e-grid-column field="Region" edittype="dropdownedit" edit="new {@params = RegionItems }" headerText="Region" textAlign="Center" minwidth="100" maxwidth="130">
-               
-           </e-grid-column>
+           <e-grid-column field="RegionId" edittype="dropdownedit" edit="new {@params = RegionItems }" headerText="Region" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
 
-            <e-grid-column field="CodeValue" headerText="Address Type"  textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+                <e-grid-column field="CodeValueId" headerText="Address Type" edittype="dropdownedit" edit="new {@params = AddressTypesItems}" textAlign="Center" minwidth="100" maxwidth="130" validationRules="@(new { required= true })"></e-grid-column>
         </e-grid-columns>
     </ejs-grid>
 
+    <br />
+    <br />
+
+  @*Contacts*@
+        <ejs-grid id="Grid2" dataSource="ViewBag.Contacts" allowResizing="true" autoFit="true" toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
+        <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+        <e-grid-columns>
+                <e-grid-column field="ContactValue" headerText="Contact" textAlign="Center" minwidth="100" maxwidth="130" validationRules="@(new { required= true, minLength= 5, maxLength=30 })"></e-grid-column>
+            <e-grid-column field="isPrimary" edittype="booleanedit" headerText="Primary" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+                <e-grid-column field="CodeValueId" headerText="Contact Type" edittype="dropdownedit" edit="new {@params = ContactTypesItems}" textAlign="Center" minwidth="100" maxwidth="130" validationRules="@(new { required= true })"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+
+    <input type="hidden" id="AddressData" name="AddressData"/>
+
+    <input type="hidden" id="ContactData" name="ContactData"/>
+
+    <button type="submit">Submit</button>
+
+    <span class="text-red">@((ViewBag.ErrorMessage is not null) ? ViewBag.ErrorMessage : "")</span>
+
+        <span asp-validation-for="DateOfBirth" class="text-red"></span>
 
  </form>
 </div>
 
 <script>
-    // Initialize the first grid
-    var grid1 = document.getElementById("Grid1").ej2_instances[0];
 
+    function serializeGridData(){
+        var addressGrid = document.getElementById("Grid1").ej2_instances[0];
+        var contactGrid = document.getElementById("Grid2").ej2_instances[0];
+
+        var addressGridData = addressGrid.getCurrentViewRecords();
+        var contactGridData = contactGrid.getCurrentViewRecords();
+
+        document.getElementById("AddressData").value = JSON.stringify(addressGridData);
+        document.getElementById("ContactData").value = JSON.stringify(contactGridData);
+    }
     
 </script>

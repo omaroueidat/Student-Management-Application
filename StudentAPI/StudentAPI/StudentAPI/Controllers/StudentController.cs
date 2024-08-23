@@ -57,13 +57,14 @@ namespace StudentAPI.Controllers
         }
 
         // PUT api/<StudentController>
-        [HttpPut]
-        public async Task<IActionResult> Update(StudentUpdateRequest student)
+        [HttpPut("{studentId:guid}")]
+        public async Task<IActionResult> Update(StudentUpdateRequest student, Guid studentId)
         {
             try
             {
-                await _studentService.UpdateStudent(student);
-            } catch(Exception e)
+                await _studentService.UpdateStudent(student, studentId);
+            } 
+            catch(Exception e)
             {
                 return BadRequest(e.Message);
             }

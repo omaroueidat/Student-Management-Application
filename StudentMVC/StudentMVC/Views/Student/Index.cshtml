@@ -8,7 +8,10 @@
 
 }
 
-<ejs-grid id="Grid" dataSource="@ViewBag.Students" allowResizing="true" autoFit="true">
+<ejs-grid id="Grid" dataSource="@ViewBag.Students" allowResizing="true" allowSorting="true" allowFiltering="true" autoFit="true">
+	<e-grid-loadingIndicator indicatorType="Shimmer"></e-grid-loadingIndicator>
+	<e-grid-filtersettings type="CheckBox"></e-grid-filtersettings>
+
 	<e-grid-columns>
 		<e-grid-column field="StudentName" headerText="Name" textAlign="Center" minwidth="100" maxwidth="150"></e-grid-column>
 		<e-grid-column field="DateOfBirth" headerText="Date Of Birth" format="d/M/y" textAlign="Center" minwidth="100" maxwidth="150"></e-grid-column>

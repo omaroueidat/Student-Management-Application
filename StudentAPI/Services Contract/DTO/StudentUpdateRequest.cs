@@ -9,7 +9,6 @@ namespace ServicesContract.DTO
 {
     public class StudentUpdateRequest
     {
-        public Guid StudentId { get; set; }
         public string? StudentName { get; set; }
 
         public DateTime DateOfBirth { get; set; }
@@ -21,7 +20,7 @@ namespace ServicesContract.DTO
 
         public Student ToStudent()
         {
-            return new Student {StudentId = StudentId, StudentName = StudentName, DateOfBirth = DateOfBirth, gender = gender };
+            return new Student {StudentName = StudentName, DateOfBirth = DateOfBirth, gender = gender };
         }
     }
 }

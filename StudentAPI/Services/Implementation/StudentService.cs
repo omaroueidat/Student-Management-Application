@@ -152,7 +152,7 @@ namespace Services
                 
         }
 
-        public async Task<StudentResponse?> UpdateStudent(StudentUpdateRequest student)
+        public async Task<StudentResponse?> UpdateStudent(StudentUpdateRequest student, Guid studentId)
         {
             if (student is null)
             {
@@ -160,7 +160,7 @@ namespace Services
             }
 
             Student? studentUpdate = await _context.Students
-                .FirstOrDefaultAsync(s => s.StudentId == student.StudentId);
+                .FirstOrDefaultAsync(s => s.StudentId == studentId);
 
             if (studentUpdate is null)
             {
@@ -214,7 +214,10 @@ namespace Services
             {
                 if (address.AddressId.ToString() != "00000000-0000-0000-0000-000000000000")
                 {
-                    await _addressService.UpdateAddress(student.StudentId, address);   
+                    if (!await _addressService.UpdateAddress(studentId, address))
+                    {
+                        throw new Exception("Some of the Data are Corruptes! Make Sure the data are correct");
+                    }
                 }
             }
 
@@ -222,13 +225,16 @@ namespace Services
             {
                 if (contact.ContactId.ToString() != "00000000-0000-0000-0000-000000000000")
                 {
-                    await _contactService.UpdateContact(student.StudentId, contact);
+                    if (!await _contactService.UpdateContact(studentId, contact))
+                    {
+                        throw new Exception("Some of the Data are Corruptes! Make Sure the data are correct");
+                    }
                 }
             }
 
-            await _addressService.AddNewAddresses(addresses, student.StudentId);
+            await _addressService.AddNewAddresses(addresses, studentId);
 
-            await _contactService.AddNewContacts(contacts, student.StudentId);
+            await _contactService.AddNewContacts(contacts, studentId);
 
             await _context.SaveChangesAsync();
 

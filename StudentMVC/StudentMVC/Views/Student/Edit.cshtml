@@ -1,0 +1,138 @@
+﻿@model StudentResponse
+
+@{
+    ViewBag.Title = $"Edit Details {Model.StudentName}";
+
+    var RegionItems = new Syncfusion.EJ2.DropDowns.DropDownList()
+            {
+                DataSource = ViewBag.Regions, // Data of Select List
+                Query = "new ej.data.Query()",
+                AllowFiltering = true,
+                Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "RegionId", Text = "RegionName" },
+
+            };
+
+    var AddressTypesItems = new Syncfusion.EJ2.DropDowns.DropDownList()
+            {
+                DataSource = ViewBag.AddressTypes, // Data of Select List
+                Query = "new ej.data.Query()",
+                AllowFiltering = true,
+                Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "CodeValueId", Text = "Value" },
+
+            };
+
+    var ContactTypesItems = new Syncfusion.EJ2.DropDowns.DropDownList()
+            {
+                DataSource = ViewBag.ContactTypes, // Data of Select List
+                Query = "new ej.data.Query()",
+                AllowFiltering = true,
+                Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "CodeValueId", Text = "Value" },
+
+            };
+}
+
+<div class="center-box">
+    <form asp-controller="Student" asp-action="Create" method="post" onsubmit="serializeGridData()">
+
+        @*StudentName*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="StudentName" class="form-label pt">Student Name</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="StudentName" class="form-input" />
+                <span asp-validation-for="StudentName" class="text-red"></span>
+            </div>
+        </div>
+
+        <br />
+
+        @*StudentDateOfBirth*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="DateOfBirth" class="form-label pt">Date of Birth</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="DateOfBirth" class="form-input" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="DateOfBirth" class="text-red"></span>
+            </div>
+        </div>
+
+        <br />
+
+        @*gender*@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label">Gender</label>
+            </div>
+            <div class="flex-1">
+                @{
+                    string[] genders = (string[])Enum.GetNames(typeof(Gender));
+                }
+                @foreach (string gender in genders)
+                {
+                    <input type="radio" asp-for="gender" value="@gender" />
+                    <label for="@gender">@gender</label>
+                }
+                <span asp-validation-for="gender" class="text-red"></span>
+            </div>
+        </div>
+
+        <br />
+
+        @*Addresses*@
+        <ejs-grid id="Grid1" dataSource="Model.Addresses" allowResizing="true" autoFit="true" toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
+            <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+            <e-grid-columns>
+                <e-grid-column field="AddressId" headerText="Address Id" textAlign="Center" allowEditing="false" minwidth="100" maxwidth="130"></e-grid-column>
+
+                <e-grid-column field="AddressValue" headerText="Address" textAlign="Center" minwidth="100" maxwidth="130" validationRules="@(new { required= true, minLength= 5, maxLength=30 })"></e-grid-column>
+                <e-grid-column field="isPrimary" edittype="booleanedit" headerText="Primary" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+
+                <e-grid-column field="RegionId" edittype="dropdownedit" edit="new {@params = RegionItems }" headerText="Region" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+
+                <e-grid-column field="CodeValueId" headerText="Address Type" edittype="dropdownedit" edit="new {@params = AddressTypesItems}" textAlign="Center" minwidth="100" maxwidth="130" validationRules="@(new { required= true })"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+
+        <br />
+        <br />
+
+        @*Contacts*@
+        <ejs-grid id="Grid2" dataSource="Model.Contacts" allowResizing="true" autoFit="true" toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
+            <e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true"></e-grid-editSettings>
+            <e-grid-columns>
+                <e-grid-column field="ContactId" headerText="Contact Id" textAlign="Center" allowEditing="false" minwidth="100" maxwidth="130"></e-grid-column>
+                <e-grid-column field="ContactValue" headerText="Contact" textAlign="Center" minwidth="100" maxwidth="130" validationRules="@(new { required= true, minLength= 5, maxLength=30 })"></e-grid-column>
+                <e-grid-column field="isPrimary" edittype="booleanedit" headerText="Primary" textAlign="Center" minwidth="100" maxwidth="130"></e-grid-column>
+                <e-grid-column field="CodeValueId" headerText="Contact Type" edittype="dropdownedit" edit="new {@params = ContactTypesItems}" textAlign="Center" minwidth="100" maxwidth="130" validationRules="@(new { required= true })"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+
+        <input type="hidden" id="AddressData" name="AddressData" />
+
+        <input type="hidden" id="ContactData" name="ContactData" />
+
+        <button type="submit">Submit</button>
+
+        <span class="text-red">@((ViewBag.ErrorMessage is not null) ? ViewBag.ErrorMessage : "")</span>
+
+        <span asp-validation-for="DateOfBirth" class="text-red"></span>
+
+    </form>
+</div>
+
+<script>
+
+    function serializeGridData() {
+        var addressGrid = document.getElementById("Grid1").ej2_instances[0];
+        var contactGrid = document.getElementById("Grid2").ej2_instances[0];
+
+        var addressGridData = addressGrid.getCurrentViewRecords();
+        var contactGridData = contactGrid.getCurrentViewRecords();
+
+        document.getElementById("AddressData").value = JSON.stringify(addressGridData);
+        document.getElementById("ContactData").value = JSON.stringify(contactGridData);
+    }
+
+</script>

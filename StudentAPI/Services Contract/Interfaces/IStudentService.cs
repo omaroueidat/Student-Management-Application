@@ -19,7 +19,7 @@ namespace ServicesContract
         Task<List<StudentResponse>> FiterStudents(string? searchBy, string? searchString);
 
 
-		Task<StudentResponse?> UpdateStudent(StudentUpdateRequest student);
+		Task<StudentResponse?> UpdateStudent(StudentUpdateRequest student, Guid studentId);
 
         Task<bool> DeleteStudent(Guid? id);
     }
